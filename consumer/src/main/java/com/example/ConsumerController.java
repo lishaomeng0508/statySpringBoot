@@ -11,10 +11,17 @@ import org.springframework.web.client.RestTemplate;
  */
 @RestController
 public class ConsumerController {
-    @Autowired
+    /*@Autowired
     RestTemplate restTemplate;
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String add() {
         return restTemplate.getForEntity("http://producer/hello", String.class).getBody();
+    }*/
+    
+    @Autowired
+    private ConsumerServer cs;
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    public String hello() {
+        return cs.addService();
     }
 }
