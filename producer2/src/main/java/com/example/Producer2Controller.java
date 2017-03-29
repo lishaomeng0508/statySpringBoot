@@ -14,14 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class Producer2Controller {
+
     private final Logger logger = Logger.getLogger(getClass());
+
     @Autowired
     private DiscoveryClient mydclient;
-    @RequestMapping(value = "/hello" ,method = RequestMethod.GET)
-    public String add(@RequestParam Integer a, @RequestParam Integer b) {
+
+    @RequestMapping(value = "/hello",method = RequestMethod.GET)
+    public String say(@RequestParam String name2) {
         ServiceInstance instance = mydclient.getLocalServiceInstance();
-        String say = "我恨你";
-        logger.info("/add, host:" + instance.getHost() + ", service_id:" + instance.getServiceId() + ", result:" + say);
-        return say;
+        logger.info("/hello, host:" + instance.getHost() + ", service_id:" + instance.getServiceId() + ", result:hate you " + name2);
+        return "hate you "+name2;
     }
 }
